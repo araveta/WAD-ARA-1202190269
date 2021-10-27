@@ -30,9 +30,10 @@
             }
         }      
     echo "</ul>";
-    echo "<div class='card-footer'><center><a class='btn btn-primary' href='Booking.php?id=".$building[$row][0]."'>Book Now</a></center></div>";
+    echo "<div class='card-footer'><center><a class='btn btn-primary' href='Booking.php'>Book Now</a></center></div>";
     echo "</div>";
     echo "</div>";
+    break;
     }
 ?>
     </div>

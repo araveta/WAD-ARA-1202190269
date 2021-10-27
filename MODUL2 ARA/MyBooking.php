@@ -1,31 +1,31 @@
 <?php include "Header.php";
 
-if(!isset($_POST['date'])){
+if(!isset($_GET['date'])){
     echo "Please fulfill your reservation form";
     exit;
 }else{
     $id = rand(100000000,999999999);
-    $name = $_POST['name'];
-    $in = date('m-d-Y H:i:s', strtotime($_POST['date'].$_POST['time']));
-    $dura = "+".$_POST['duration']." hours";
-    $out = date('m-d-Y H:i:s',strtotime($dura,strtotime($_POST['date'].$_POST['time'])));
-    $type = $building[$_POST['type']][1];
-    $phone = $_POST['phone'];
-    $price = $_POST['duration']*$building[$_POST['type']][2];
+    $name = $_GET['name'];
+    $in = date('m-d-Y H:i:s', strtotime($_GET['date'].$_GET['time']));
+    $dura = "+".$_GET['duration']." hours";
+    $out = date('m-d-Y H:i:s',strtotime($dura,strtotime($_GET['date'].$_GET['time'])));
+    $type = $building[$_GET['type']][1];
+    $phone = $_GET['phone'];
+    $price = $_GET['duration']*$building[$_GET['type']][2];
     $add1 = 0;
     $add2 = 0;
     $add3 = 0;
    
 }
-if(isset($_POST['catering'])){
-    $catering = $_POST['catering'];
+if(isset($_GET['catering'])){
+    $catering = $_GET['catering'];
     $add1 = $service[$catering][1];
 }
-if(isset($_POST['decor'])){
-    $decor = $_POST['decor'];
+if(isset($_GET['decor'])){
+    $decor = $_GET['decor'];
     $add2 = $service[$decor][1];
 }
-if(isset($_POST['sound'])){
+if(isset($_GET['sound'])){
     $sound = $_POST['sound'];
     $add3 = $service[$sound][1];
 }

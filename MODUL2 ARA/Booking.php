@@ -20,7 +20,7 @@ if(!isset($_GET['id'])){
                     ?>
                 </div>
                 <div class="col-lg">
-                    <form class="form" action="MyBooking.php" id="form" method="post">
+                    <form class="form" action="MyBooking.php?name='naruto'"id="form" method="post">
                         <label for="name">Name</label>
                         <input class="form-control" type="text" name="name" id="name" value="ara_1202190269" readonly>
                         <label for="date">Event Date</label>
