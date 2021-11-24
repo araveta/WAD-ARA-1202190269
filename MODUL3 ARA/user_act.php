@@ -1,25 +1,26 @@
-<?php include "koneksi.php";
-    if(isset($_POST['submit']))
-    {
-        $judul_buku=$_POST['judul_buku'];
-        $penulis_buku=$_POST['penulis_buku'];
-        $tahun_terbit=$_POST['tahun_terbit'];
-        $deskripsi=$_POST['deskripsi'];
-        $tag=$_POST['tag'];
-        $gambar=$_FILES['gambar']['name'];
-        $bahasa=$_POST['bahasa'];
-        $temp = $_FILES['gambar']['tmp_name'];
-        $uploads_dir = "images/";
-        $simpan=mysqli_query($koneksi,"insert into Books_table (judul_buku, penulis_buku, tahun_terbit, deskripsi, gambar, tag, bahasa) values ('$judul', '$penulis', '$tahun', '$deskripsi', '$gambar', '$tag', '$bahasa')");
-        
-        if($simpan) {
-            move_uploaded_file($temp, $uploads_dir.$gambar);
-            header('location:Gregorius_Home.php');
-        }
-            else {
-            echo "
-                SERVER ERROR
-            ";  
-        }
-    }
+<?php 
+include 'koneksi.php';
+$nama = $_POST['nama'];
+$kontak = $_POST['kontak'];
+$alamat = $_POST['alamat'];
+
+$rand = rand();
+$ekstensi =  array('png','jpg','jpeg','gif');
+$filename = $_FILES['foto']['name'];
+$ukuran = $_FILES['foto']['size'];
+$ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+if(!in_array($ext,$ekstensi) ) {
+	header("location:index.php?alert=gagal_ekstensi");
+}else{
+	if($ukuran < 1044070){		
+		$xx = $rand.'_'.$filename;
+		move_uploaded_file($_FILES['foto']['tmp_name'], 'gambar/'.$rand.'_'.$filename);
+		mysqli_query($koneksi, "INSERT INTO user VALUES(NULL,'$nama','$kontak','$alamat','$xx')");
+		header("location:index.php?alert=berhasil");
+	}else{
+		header("location:index.php?alert=gagak_ukuran");
+	}
+}
+
 ?>
