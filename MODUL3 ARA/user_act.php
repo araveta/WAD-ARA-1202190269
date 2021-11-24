@@ -1,26 +1,31 @@
 <?php 
 include 'koneksi.php';
-$nama = $_POST['nama'];
-$kontak = $_POST['kontak'];
-$alamat = $_POST['alamat'];
+$judul_buku = $_POST['judul_buku'];
+$penulis_buku = $_POST['penulis_buku'];
+$tahun_terbit = $_POST['tahun_terbit'];
+$deskripsi = $_POST['deskripsi'];
+$matkul = $_POST['tag'];
+$tag = implode(" ", $matkul);
+$bahasa = $_POST['bahasa'];
+
 
 $rand = rand();
 $ekstensi =  array('png','jpg','jpeg','gif');
-$filename = $_FILES['foto']['name'];
-$ukuran = $_FILES['foto']['size'];
+$filename = $_FILES['gambar']['name'];
+$ukuran = $_FILES['gambar']['size'];
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
+$gambar = $rand.'_'.$filename;
+move_uploaded_file($_FILES['gambar']['tmp_name'], 'images/'.$gambar);
+echo $gambar;	
 
-if(!in_array($ext,$ekstensi) ) {
-	header("location:index.php?alert=gagal_ekstensi");
-}else{
-	if($ukuran < 1044070){		
-		$xx = $rand.'_'.$filename;
-		move_uploaded_file($_FILES['foto']['tmp_name'], 'gambar/'.$rand.'_'.$filename);
-		mysqli_query($koneksi, "INSERT INTO user VALUES(NULL,'$nama','$kontak','$alamat','$xx')");
-		header("location:index.php?alert=berhasil");
-	}else{
-		header("location:index.php?alert=gagak_ukuran");
-	}
-}
+$insert = "INSERT INTO books_table (judul_buku, penulis_buku, tahun_terbit, deskripsi, tag, bahasa, gambar) 
+VALUES ('$judul_buku', '$penulis_buku', '$tahun_terbit', '$deskripsi', '$tag', '$bahasa','$gambar')";
+
+
+if (mysqli_query($koneksi, $insert)) {
+	echo "New record created successfully";
+  } else {
+	echo "Error: " . $insert . "<br>" . mysqli_error($koneksi);
+  }
 
 ?>

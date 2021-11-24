@@ -22,29 +22,29 @@
           </center>
           <div class="mb-3">
             <label class="form-label fw-bold">Judul Buku</label>
-            <input type="text" class="form-control" name="judul_buku" placeholder="Contoh: Pemrograman Web Bersama EAD" required="required" />
+            <input type="text" class="form-control" name="judul_buku" placeholder="Contoh: Pemrograman Web Bersama EAD" required />
           </div>
           <div class="mb-3">
             <label class="form-label fw-bold">Penulis</label>
-            <input class="form-control" type="text" name="penulis_buku" value="Ara_1202190269" aria-label="Disabled input readonly" disabled readonly />
+            <input class="form-control" type="text" name="penulis_buku" value="Ara_1202190269" aria-label="Disabled input readonly" readonly />
           </div>
           <div class="mb-3">
             <label class="form-label fw-bold">Tahun Terbit</label>
-            <input type="text" class="form-control" name="tahun_terbit" placeholder="Contoh: 2001" required="required" />
+            <input type="text" class="form-control" name="tahun_terbit" placeholder="Contoh: 2001" required />
           </div>
           <div class="mb-3">
             <label class="form-label fw-bold">Deskripsi</label>
-            <textarea class="form-control" name="deskripsi" rows="3" required="required" placeholder="Contoh: Buku ini menjelaskan tentang ..."></textarea>
+            <textarea class="form-control" name="deskripsi" rows="3" required placeholder="Contoh: Buku ini menjelaskan tentang ..."></textarea>
           </div>
 
           <div class="mb-3">
             <label class="form-label fw-bold col-1">Bahasa</label>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="bahasa"  value="Indonesia" required="required">
+              <input class="form-check-input" type="radio" name="bahasa"  value="Indonesia" required>
              <label class="form-check-label" >Indonesia</label>
             </div>
             <div class="form-check form-check-inline mb-3">
-              <input class="form-check-input" type="radio" name="bahasa"  value="Lainnya" required="required">
+              <input class="form-check-input" type="radio" name="bahasa"  value="Lainnya" >
               <label class="form-check-label" >Lainnya</label>
             </div>
 
@@ -83,7 +83,7 @@
           </div>
           <div class="mb-4">
             <label class="form-label fw-bold">Gambar</label>
-            <input class="form-control" type="file" name="gambar" required="required" />
+            <input class="form-control" type="file" name="gambar" />
             <p style="color: red">Ekstensi yang diperbolehkan .png | .jpg | .jpeg</p>
           </div>
           <center>

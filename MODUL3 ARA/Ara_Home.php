@@ -28,13 +28,20 @@
     <!--Navbar End-->
 
   <body>
-    <!--Books if not available Start-->
-    <div class="container text-center" style="padding-top: 100px; padding-bottom: 50px">
+    <?php
+    include "koneksi.php";
+    $sql = "SELECT * FROM books_table";
+    $result = mysqli_query($koneksi, $sql);
+    if (mysqli_num_rows($result)>0){echo"harusnya muncul card-card namun tidak keburu, dan sudah pasrah :,))";}
+    else{?>
+      <div class="container text-center" style="padding-top: 100px; padding-bottom: 50px">
       <h2>Belum Ada Buku</h2>
       <div class="bg-success p-1 bg-opacity-50"></div>
       <p style="padding-top: 20px">Silahkan Menambahkan Buku</p>
     </div>
-    <!--Books if not available End-->
+    <?php }?>
+    
+
   </body>
 </html>
 
