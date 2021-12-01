@@ -14,13 +14,12 @@
     <?php include "header.php"?>
 
     <?php 
-
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
-     $emaillogin = '';
-     $passwordlogin = '';
+    include "koneksi.php";
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+    
 
     if (isset($_SESSION['username'])) {
         header("Location: index.php");
@@ -28,10 +27,14 @@ if(!isset($_SESSION))
     else{
         if ($_SERVER['REQUEST_METHOD']=='POST')
      {
+
             $username = $_POST['email'];
             $password = $_POST['password']; 
 
-            if ($username == $emaillogin && $password == $passwordlogin) {
+            $login ="SELECT * FROM users WHERE email = '$username'";
+            $result=mysqli_query($koneksi,$login);
+
+            if (mysqli_fetch_assoc($result) >0 ) {
                 $_SESSION['username'] = $username;
                 header("Location: index.php");
             } 

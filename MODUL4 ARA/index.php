@@ -14,16 +14,16 @@
     <?php include "header.php"?>
 
     <main>
-    <?php
+        <?php
        if(!isset($_SESSION)) 
        { 
            session_start(); 
        } 
  
         if (isset($_SESSION['username'])) {?>
-            <div class="alert alert-success" role="alert">
-                Logged in!
-            </div>
+        <div class="alert alert-success" role="alert">
+            Logged in!
+        </div>
         <?php } ?>
 
         <form method="POST" action="testform.php">
@@ -54,8 +54,19 @@
                         </div>
                         <div class="card-footer">
                             <input type="hidden" id="price" name="price" value="4000000">
+
+                            <?php if (isset($_SESSION['username'])) {?>
                             <button class="w-100 btn btn-primary " data-toggle="modal" data-target="#bookingModal"
                                 type="button">Pesan Tiket</button>
+                            <?php } 
+        
+            else {?>
+
+                            <p class="fw-bold text-center text-secondary">Login untuk memesan</p>
+                            <?php
+                        } 
+                        ?>
+
                         </div>
                     </div>
                     <div class="card">
@@ -77,8 +88,18 @@
                         </div>
                         <div class="card-footer">
                             <input type="hidden" id="price" name="price" value="5000000">
+                           
+                            <?php if (isset($_SESSION['username'])) {?>
                             <button class="w-100 btn btn-primary " data-toggle="modal" data-target="#bookingModal"
                                 type="button">Pesan Tiket</button>
+                            <?php } 
+        
+            else {?>
+
+                            <p class="fw-bold text-center text-secondary">Login untuk memesan</p>
+                            <?php
+                        } 
+                        ?>
                         </div>
                     </div>
                     <div class="card">
@@ -98,9 +119,18 @@
                         </div>
                         <div class="card-footer">
                             <input type="hidden" id="price" name="price" value="6000000">
+                            
+                            <?php if (isset($_SESSION['username'])) {?>
                             <button class="w-100 btn btn-primary " data-toggle="modal" data-target="#bookingModal"
                                 type="button">Pesan Tiket</button>
-                        </div>
+                            <?php } 
+        
+            else {?>
+
+                            <p class="fw-bold text-center text-secondary">Login untuk memesan</p>
+                            <?php
+                        } 
+                        ?>
                     </div>
                 </div>
             </div>

@@ -15,8 +15,8 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <p></p>
-          <p></p>
+          <p>Nama &nbsp;: Nazara Agusta Veta Putra</p>
+          <p>NIM  &nbsp;&nbsp;&nbsp;&nbsp;: 1202190269</p>
         </div>
       </div>
       
