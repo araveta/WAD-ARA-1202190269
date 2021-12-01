@@ -11,19 +11,53 @@
 </head>
 
 <body style="background-color:#fbefd5">
-  <header class="d-flex flex-wrap justify-content-center py-2 mb-4"
-    style="background-color:#94a8eb; padding-left: 16%; padding-right:16%">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none fs-5 fw-bold ">
-      EAD Travel </a>
-    <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a href="register.php" class="nav-link disabled text-secondary">Register</a>
-      </li>
-      <li class="nav-item">
-        <a href="login.php" class="nav-link text-dark">Login</a>
-      </li>
-    </ul>
-  </header>
+  <?php include "header.php"?>
+
+  <?php 
+include "koneksi.php";
+if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+
+if (isset($_SESSION['username'])) {
+    header("Location: index.php");
+}
+else{
+    if ($_SERVER['REQUEST_METHOD']=='POST')
+ {
+        $nama = $_POST['nama'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $password = $_POST['password'];
+        $passConf = $_POST['passConf'];
+        
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = mysqli_query($koneksi, $sql);
+
+        if (mysqli_fetch_assoc($result) >0 || ($password != $passConf)){ ?>
+  <div class="alert alert-danger" role="alert">
+    Registration failed!
+  </div>
+  <?php }
+      else{
+
+        $insert = "INSERT INTO users (nama, email, password, no_hp) VALUES ('$nama','$email','$password','$phone')";
+        $result = mysqli_query($koneksi, $insert);
+
+        if($result) { ?>
+  <div class="alert alert-success" role="alert">
+    Registration Success!
+  </div>
+
+  <?php } 
+
+      }
+
+      }  
+    }
+ 
+?>
 
   <main>
     <div class="container d-flex py-3 justify-content-center">
@@ -34,7 +68,7 @@
             <h4 class="my-2 fw-normal card-title text-center">Register</h4>
             <hr>
 
-            <form class="needs-validation" novalidate>
+            <form method="post" class="needs-validation" novalidate>
               <div class="row g-3">
                 <div class="col-12">
                   <label for="nama" class="form-label">Nama</label>
@@ -78,9 +112,7 @@
     </div>
   </main>
 
-  <footer class="text-muted text-center fixed-bottom pt-3 pb-1" style="background-color:#94a8eb">
-    <p>&copy;2021 Copyright <a href="#">Ara_1202190269</a></p>
-  </footer>
+  <?php include "footer.php"?>
 
 
 </body>
